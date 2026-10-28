@@ -2,6 +2,7 @@ package solitaire.model;
 
 import java.util.Objects;
 
+/** Class that defines a game move */
 public final class Move {
     private final Position from;
     private final Position over;

@@ -1,5 +1,10 @@
 package solitaire.model;
 
+/**
+ * 
+ * EnglishBoard class that provides overriden method for finding
+ * center hole
+ */
 public class EnglishBoard extends Board {
     EnglishBoard(int size) {
         super(size);

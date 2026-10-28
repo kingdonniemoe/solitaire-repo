@@ -2,6 +2,7 @@ package solitaire.model;
 
 import java.util.Objects;
 
+/** Class that will hold board position as an object for game logic */
 public final class Position {
 
     private final int row;

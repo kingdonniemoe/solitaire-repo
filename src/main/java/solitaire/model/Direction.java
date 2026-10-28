@@ -1,5 +1,9 @@
 package solitaire.model;
 
+/**
+ * 
+ * Direction Enum holding all possible directions on board
+ */
 public enum Direction {
     UP(-1, 0),
     DOWN(1, 0),

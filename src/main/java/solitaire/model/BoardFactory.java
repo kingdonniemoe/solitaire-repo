@@ -1,5 +1,8 @@
 package solitaire.model;
 
+/**
+ * Class that creates Board based on type and size.
+ */
 public final class BoardFactory {
 
     private BoardFactory() {

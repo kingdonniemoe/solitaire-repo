@@ -1,6 +1,9 @@
 package solitaire.model;
 
-// What one spot can hold.
+/**
+ * 
+ * Cell Enum
+ */
 public enum Cell {
     INVALID,
     EMPTY,

@@ -6,6 +6,10 @@ import solitaire.model.BoardType;
 import solitaire.model.SolitaireGame;
 import solitaire.model.Position;
 
+/**
+ * 
+ * GameController class is used to keep model and ui packages seperated and acts as the interface between the two for communication.
+ */
 public class GameController {
     public static final String SIZE_ERROR = "Board size must be an odd number from " + Board.MIN_SIZE + " to "
             + Board.MAX_SIZE;

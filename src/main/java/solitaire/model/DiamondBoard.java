@@ -1,5 +1,9 @@
 package solitaire.model;
 
+/**
+ * 
+ * DiamondBoard Class that provides overriden method for finding center hole
+ */
 public class DiamondBoard extends Board {
 
     DiamondBoard(int size) {

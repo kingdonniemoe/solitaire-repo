@@ -1,5 +1,9 @@
 package solitaire.model;
 
+/**
+ * 
+ * Rating Enum that provides round feedback
+ */
 public enum Rating {
     OUTSTANDING("Outstanding"),
     VERY_GOOD("Very Good"),

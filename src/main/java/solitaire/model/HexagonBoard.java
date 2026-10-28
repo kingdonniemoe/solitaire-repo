@@ -1,5 +1,9 @@
 package solitaire.model;
 
+/**
+ * HexagonBoard Class that provides overriden method for finding center hole
+ * 
+ */
 public class HexagonBoard extends Board {
     HexagonBoard(int size) {
         super(size);

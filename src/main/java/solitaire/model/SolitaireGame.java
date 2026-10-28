@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * 
+ * Class that holds the boards and is storing the game
+ */
 public class SolitaireGame {
     private final Board board;
 
