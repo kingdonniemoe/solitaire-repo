@@ -1,5 +1,6 @@
 package solitaire.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -79,6 +80,18 @@ public abstract class Board {
 
     public List<Direction> getDirections() {
         return List.of(Direction.values());
+    }
+
+    public List<Position> getHoles() {
+        List<Position> holes = new ArrayList<>();
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                if (grid[row][col] != Cell.INVALID) {
+                    holes.add(new Position(row, col));
+                }
+            }
+        }
+        return holes;
     }
 
     void setCell(Position p, Cell cell) {
