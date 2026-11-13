@@ -28,7 +28,7 @@ public abstract class SolitaireGame {
         return findMove(from, to) != null;
     }
 
-    public boolean applyMove(Position from, Position to) {
+    protected boolean applyMove(Position from, Position to) {
         Move move = findMove(from, to);
         if (move == null) {
             return false;
