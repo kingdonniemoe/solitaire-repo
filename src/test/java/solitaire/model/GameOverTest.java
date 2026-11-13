@@ -30,7 +30,7 @@ class GameOverTest {
 
     @Test
     void gameContinuesWhileValidMoveRemains() {
-        SolitaireGame game = new SolitaireGame(BoardFactory.create(BoardType.ENGLISH, 7));
+        ManualGame game = new ManualGame(BoardFactory.create(BoardType.ENGLISH, 7));
 
         game.makeMove(new Position(1, 3), CENTER);
 
@@ -40,7 +40,7 @@ class GameOverTest {
 
     @Test
     void gameEndsWhenNoValidMovesRemain() {
-        SolitaireGame game = new SolitaireGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
+        ManualGame game = new ManualGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
         assertFalse(game.isGameOver());
 
         game.makeMove(START, CENTER);
@@ -51,7 +51,7 @@ class GameOverTest {
 
     @Test
     void onePegLeftIsOutstanding() {
-        SolitaireGame game = new SolitaireGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
+        ManualGame game = new ManualGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
 
         game.makeMove(START, CENTER);
 
@@ -61,7 +61,7 @@ class GameOverTest {
 
     @Test
     void twoPegsLeftIsVeryGood() {
-        SolitaireGame game = new SolitaireGame(
+        ManualGame game = new ManualGame(
                 boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED, new Position(0, 2)));
 
         game.makeMove(START, CENTER);
@@ -72,7 +72,7 @@ class GameOverTest {
 
     @Test
     void threePegsLeftIsGood() {
-        SolitaireGame game = new SolitaireGame(
+        ManualGame game = new ManualGame(
                 boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED, new Position(0, 2), new Position(0, 4)));
 
         game.makeMove(START, CENTER);
@@ -83,7 +83,7 @@ class GameOverTest {
 
     @Test
     void fourOrMorePegsIsAverage() {
-        SolitaireGame game = new SolitaireGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED, new Position(0, 2),
+        ManualGame game = new ManualGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED, new Position(0, 2),
                 new Position(0, 4), new Position(6, 2), new Position(6, 4)));
 
         game.makeMove(START, CENTER);
@@ -94,7 +94,7 @@ class GameOverTest {
 
     @Test
     void noMoveCanBeMadeAfterGameOver() {
-        SolitaireGame game = new SolitaireGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
+        ManualGame game = new ManualGame(boardWithPegsAt(BoardType.ENGLISH, 7, START, JUMPED));
         game.makeMove(START, CENTER);
 
         boolean moved = game.makeMove(CENTER, START);
@@ -106,7 +106,7 @@ class GameOverTest {
     @Test
     void gameOverDetectedOnHexagonAndDiamondBoards() {
         for (BoardType type : new BoardType[] { BoardType.HEXAGON, BoardType.DIAMOND }) {
-            SolitaireGame game = new SolitaireGame(boardWithPegsAt(type, 7, START, JUMPED));
+            ManualGame game = new ManualGame(boardWithPegsAt(type, 7, START, JUMPED));
 
             game.makeMove(START, CENTER);
 
@@ -117,7 +117,7 @@ class GameOverTest {
 
     @Test
     void gameIsNotOverWhileOnlyDiagonalMoveRemains() {
-        SolitaireGame game = new SolitaireGame(boardWithPegsAt(BoardType.ENGLISH, 7, new Position(2, 2), CENTER));
+        ManualGame game = new ManualGame(boardWithPegsAt(BoardType.ENGLISH, 7, new Position(2, 2), CENTER));
 
         assertFalse(game.isGameOver());
         assertEquals(1, game.getValidMoves().size());
@@ -125,7 +125,7 @@ class GameOverTest {
 
     @Test
     void ratingIsNotAvailableBeforeGameIsOver() {
-        SolitaireGame game = new SolitaireGame(BoardFactory.create(BoardType.ENGLISH, 7));
+        ManualGame game = new ManualGame(BoardFactory.create(BoardType.ENGLISH, 7));
 
         assertThrows(IllegalStateException.class, game::getRating);
     }

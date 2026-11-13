@@ -8,10 +8,11 @@ import java.util.Objects;
  * 
  * Class that holds the boards and is storing the game
  */
-public class SolitaireGame {
+public abstract class SolitaireGame {
+
     private final Board board;
 
-    public SolitaireGame(Board board) {
+    protected SolitaireGame(Board board) {
         this.board = Objects.requireNonNull(board, "board");
     }
 
@@ -27,7 +28,7 @@ public class SolitaireGame {
         return findMove(from, to) != null;
     }
 
-    public boolean makeMove(Position from, Position to) {
+    public boolean applyMove(Position from, Position to) {
         Move move = findMove(from, to);
         if (move == null) {
             return false;

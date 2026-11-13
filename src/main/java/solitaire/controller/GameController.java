@@ -5,10 +5,12 @@ import solitaire.model.BoardFactory;
 import solitaire.model.BoardType;
 import solitaire.model.SolitaireGame;
 import solitaire.model.Position;
+import solitaire.model.ManualGame;
 
 /**
  * 
- * GameController class is used to keep model and ui packages seperated and acts as the interface between the two for communication.
+ * GameController class is used to keep model and ui packages seperated and acts
+ * as the interface between the two for communication.
  */
 public class GameController {
     public static final String SIZE_ERROR = "Board size must be an odd number from " + Board.MIN_SIZE + " to "
@@ -34,13 +36,13 @@ public class GameController {
     }
 
     public void handleClick(Position clicked) {
-        if (game.isGameOver()) {
+        if (!(game instanceof ManualGame manual) || manual.isGameOver()) {
             return;
         }
 
         switch (game.getBoard().getCell(clicked)) {
             case PEG -> toggleSelection(clicked);
-            case EMPTY -> tryMoveTo(clicked);
+            case EMPTY -> tryMoveTo(manual, clicked);
             case INVALID -> {
             }
         }
@@ -59,7 +61,7 @@ public class GameController {
     }
 
     private void start(BoardType type, int size) {
-        game = new SolitaireGame(BoardFactory.create(type, size));
+        game = new ManualGame(BoardFactory.create(type, size));
         selected = null;
         message = "";
     }
@@ -69,13 +71,13 @@ public class GameController {
         message = "";
     }
 
-    private void tryMoveTo(Position hole) {
+    private void tryMoveTo(ManualGame manual, Position hole) {
         if (selected == null) {
             return;
         }
-        if (game.makeMove(selected, hole)) {
+        if (manual.makeMove(selected, hole)) {
             selected = null;
-            message = game.isGameOver() ? gameOverMessage() : "";
+            message = manual.isGameOver() ? gameOverMessage() : "";
         } else {
             message = INVALID_MOVE;
         }

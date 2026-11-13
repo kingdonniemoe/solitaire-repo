@@ -6,15 +6,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-class SolitaireGameTest {
+class ManualGameTest {
 
-    private SolitaireGame newEnglishGame() {
-        return new SolitaireGame(BoardFactory.create(BoardType.ENGLISH, 7));
+    private ManualGame newEnglishGame() {
+        return new ManualGame(BoardFactory.create(BoardType.ENGLISH, 7));
     }
 
     @Test
     void orthogonalJumpMovesPegAndRemovesJumpedPeg() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
 
         boolean moved = game.makeMove(new Position(1, 3), new Position(3, 3));
 
@@ -29,7 +29,7 @@ class SolitaireGameTest {
 
     @Test
     void diagonalJumpMovesPegAndRemovesJumpedPeg() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
 
         Board board = game.getBoard();
         board.setCell(new Position(3, 3), Cell.PEG);
@@ -45,7 +45,7 @@ class SolitaireGameTest {
 
     @Test
     void jumpOverAnEmptyHoleIsRejected() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
         game.getBoard().setCell(new Position(3, 4), Cell.EMPTY);
         int pegsBefore = game.getPegsLeft();
 
@@ -57,7 +57,7 @@ class SolitaireGameTest {
 
     @Test
     void destinationNotTwoHolesAwayIsRejected() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
 
         assertFalse(game.isValidMove(new Position(3, 2), new Position(3, 3)));
         assertFalse(game.isValidMove(new Position(0, 3), new Position(3, 3)));
@@ -66,14 +66,14 @@ class SolitaireGameTest {
 
     @Test
     void jumpIntoNonEmptyHoleIsRejected() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
 
         assertFalse(game.isValidMove(new Position(0, 3), new Position(2, 3)));
     }
 
     @Test
     void newEnglishGameHasExactlyFourValidMoves() {
-        SolitaireGame game = newEnglishGame();
+        ManualGame game = newEnglishGame();
 
         assertEquals(4, game.getValidMoves().size());
     }
