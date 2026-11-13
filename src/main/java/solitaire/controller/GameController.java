@@ -70,12 +70,12 @@ public class GameController {
         return message;
     }
 
-    public GameMode getMode(){
+    public GameMode getMode() {
         return mode;
     }
 
     private void start(BoardType type, int size, GameMode mode) {
-        this.game = GameFactory.create(mode, BoardFactory.create(type,size));
+        this.game = GameFactory.create(mode, BoardFactory.create(type, size));
         this.mode = mode;
         selected = null;
         message = "";
@@ -132,5 +132,9 @@ public class GameController {
         selected = null;
         message = "";
         return true;
+    }
+
+    public boolean canRandomize() {
+        return game instanceof ManualGame && !game.isGameOver();
     }
 }

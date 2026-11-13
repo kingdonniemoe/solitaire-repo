@@ -88,4 +88,28 @@ class GameModeControllerTest {
 
         assertFalse(controller.randomize());
     }
+
+    @Test
+    void randomizeIsAvailableInManualGame() {
+        GameController controller = new GameController();
+
+        assertTrue(controller.canRandomize());
+    }
+
+    @Test
+    void randomizeIsNotAvailableInAutomatedGame() {
+        GameController controller = automatedController();
+
+        assertFalse(controller.canRandomize());
+    }
+
+    @Test
+    void randomizeIsNotAvaialbeOnceGameIsOver() {
+        GameController controller = automatedController();
+        while (controller.autoStep()) {
+
+        }
+
+        assertFalse(controller.canRandomize());
+    }
 }
